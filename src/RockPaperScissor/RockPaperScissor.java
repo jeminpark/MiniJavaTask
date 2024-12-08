@@ -41,13 +41,37 @@ public class RockPaperScissor {
 
 
             if(player.equals("가위")) {
-
+                if(comResult.equals("가위")) {
+                    System.out.println("비겼다.");
+                }
+                else if(comResult.equals("바위")) {
+                    System.out.println("내가 졌다..");
+                }
+                else if(comResult.equals("보")) {
+                    System.out.println("내가 이겼다!");
+                }
             }
             else if(player.equals("바위")) {
-
+                if(comResult.equals("가위")) {
+                    System.out.println("내가 이겼다!");
+                }
+                else if(comResult.equals("바위")) {
+                    System.out.println("비겼다.");
+                }
+                else if(comResult.equals("보")) {
+                    System.out.println("내가 졌다..");
+                }
             }
             else if(player.equals("보")) {
-
+                if(comResult.equals("가위")) {
+                    System.out.println("내가 졌다..");
+                }
+                else if(comResult.equals("바위")) {
+                    System.out.println("내가 이겼다!");
+                }
+                else if(comResult.equals("보")) {
+                    System.out.println("비겼다.");
+                }
             }
             else {
                 System.out.println("잘못 입력하였습니다.");
