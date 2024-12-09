@@ -21,8 +21,14 @@ public class RockPaperScissor {
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
 
-        while(true) {
+        int win = 0;
+        int lose = 0;
+        int draw = 0;
+        int count = 0;
+       
 
+        while(true) {
+            count ++;
             System.out.println("가위, 바위, 보");
             String player = scan.next();
 
@@ -43,41 +49,54 @@ public class RockPaperScissor {
             if(player.equals("가위")) {
                 if(comResult.equals("가위")) {
                     System.out.println("비겼다.");
+                    draw ++;
                 }
                 else if(comResult.equals("바위")) {
                     System.out.println("내가 졌다..");
+                    lose ++;
                 }
                 else if(comResult.equals("보")) {
                     System.out.println("내가 이겼다!");
+                    win ++;
                 }
             }
             else if(player.equals("바위")) {
                 if(comResult.equals("가위")) {
                     System.out.println("내가 이겼다!");
+                    win ++;
                 }
                 else if(comResult.equals("바위")) {
                     System.out.println("비겼다.");
+                    draw ++;
                 }
                 else if(comResult.equals("보")) {
                     System.out.println("내가 졌다..");
+                    lose ++;
                 }
             }
             else if(player.equals("보")) {
                 if(comResult.equals("가위")) {
                     System.out.println("내가 졌다..");
+                    lose ++;
                 }
                 else if(comResult.equals("바위")) {
                     System.out.println("내가 이겼다!");
+                    win ++;
                 }
                 else if(comResult.equals("보")) {
                     System.out.println("비겼다.");
+                    draw ++;
                 }
             }
             else {
                 System.out.println("잘못 입력하였습니다.");
                 
             }
-
+            System.out.println("승률: "+(((double)win/count)*100));
+            System.out.println("승리: "+win+" 회");
+            System.out.println("패배: "+lose+" 회");
+            System.out.println("비김: "+draw+" 회");
+            System.out.println("경기 횟수: "+count+" 회");
         }
     }
 }
