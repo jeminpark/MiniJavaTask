@@ -17,6 +17,7 @@ public class App {
 
     public static void main(String[] args) {
 
+      
         Scanner scan = new Scanner(System.in);
         Random rand = new Random();
         List<String> menu = new ArrayList<>();
@@ -24,15 +25,17 @@ public class App {
         menu.add("치킨");
         menu.add("햄버거");
 
-        int rNum = rand.nextInt(3);
         
         while(true) {
+            int rNum = rand.nextInt(menu.size());
+            // 랜덤으로 메뉴를 선택
             String menuPrint = menu.get(rNum);
             
             System.out.println("오늘의 점심메뉴는 " +menuPrint + " 입니다.");
 
             while(true) {
-                System.out.println(menuPrint + "이(가) 마음에 들면 1, 맘에 들지않으면 2, 메뉴를 추가하려면 3을 눌러주세요.");
+                System.out.println(menuPrint + "이(가) 마음에 들면 1, 맘에 들지않으면 2, 메뉴를 추가하려면 3을 눌러주세요. 4를 누르면 종료합니다.");
+                System.out.print("입력 : ");
                 int answer = scan.nextInt();
 
                 if(answer == 1) {
@@ -40,16 +43,20 @@ public class App {
                     System.exit(0);
                 }
                 else if(answer == 2) { 
-                    
-                    int newRnum = rand.nextInt(3);
-                    if(rNum == newRnum) {
-                        
-                    }
+                    break;
                     
                     
                 }
                 else if(answer == 3) {
-
+                    System.out.print("추가할 메뉴를 입력하세요 : ");
+                    String addMenu = scan.next();
+                    menu.add(addMenu);
+                    System.out.println(addMenu + "이(가) 추가되었습니다.");
+                    break;
+                }
+                else if(answer == 4) {
+                    System.out.println("프로그램을 종료합니다.");
+                    System.exit(0);
                 }
                 else {
                     System.out.println("잘못 선택하였습니다.");
