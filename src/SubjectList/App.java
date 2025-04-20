@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class App {
     /*
@@ -135,6 +137,23 @@ public class App {
 
             }
             else if(select == 7) {
+                System.out.println("과목 리스트를 txt파일에 저장합니다.");
+                if(subjectList.isEmpty()) {
+                    System.out.println("과목 리스트가 비어있습니다.");
+                } else {
+                    try {
+                        String path = System.getProperty("user.dir") + "/src/SubjectList";
+                        BufferedWriter bw = new BufferedWriter(new FileWriter(path + "/SubjectList.txt", true));
+                        for(String subject : subjectList) {
+                            bw.write(subject + "\n");
+                        }
+                        bw.close();
+                        System.out.println("과목 리스트가 txt파일에 저장되었습니다.");                        
+                    } catch (java.io.IOException e) {
+                        System.out.println("저장에 실패했습니다.");
+                        e.printStackTrace();
+                    }
+                }
                 
 
             }
