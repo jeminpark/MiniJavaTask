@@ -1,6 +1,7 @@
 package SubjectList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -33,6 +34,7 @@ public class App {
             System.out.println("7. 과목 저장");
             System.out.println("8. 과목 불러오기");
             System.out.println("0. 종료");
+            System.out.print("원하는 기능 번호입력 :  ");
             int select = scan.nextInt();
             if(select == 0) {
                 System.out.println("프로그램을 종료합니다.");
@@ -57,21 +59,83 @@ public class App {
 
             }
             else if(select == 2) {
+                while(true) {
+                    System.out.println("삭제할 과목을 입력하세요(종료하려면 0을 입력하세요): ");
+                    String input = scan.next();
+                    if(input.equals("0")) {
+                        System.out.println("과목 삭제를 종료합니다.");
+                        break;
+                    }
+                    if(subjectList.contains(input)) {
+                        subjectList.remove(input);
+                        System.out.println(input + "이(가) 삭제되었습니다.");
+                    } else {
+                        System.out.println("존재하지 않는 과목입니다.");
+                    }
+
+                }
 
             }
-            else if(select == 3) {
+            else if(select == 3) { 
+                while(true) {
+                    System.out.println("수정할 과목을 입력하세요(종료하려면 0을 입력하세요): ");
+                    String input = scan.next();
+                    if(input.equals("0")) {
+                        System.out.println("과목 수정을 종료합니다.");
+                        break;
+                    }
+                    if(subjectList.contains(input)) {
+                        System.out.println("수정할 과목을 입력하세요: ");
+                        String newInput = scan.next();
+                        if(subjectList.contains(newInput)) {
+                            System.out.println("이미 존재하는 과목입니다.");
+                        } else {
+                            subjectList.remove(input);
+                            subjectList.add(newInput);
+                            System.out.println(input + "이(가) " + newInput + "(으)로 수정되었습니다.");
+                        }
+                    } else {
+                        System.out.println("존재하지 않는 과목입니다.");
+                    }
+
+                }
 
             }
             else if(select == 4) {
+                while(true) {
+                    System.out.println("검색할 과목을 입력하세요(종료하려면 0을 입력하세요): ");
+                    String input = scan.next();
+                    if(input.equals("0")) {
+                        System.out.println("과목 검색을 종료합니다.");
+                        break;
+                    }
+                    if(subjectList.contains(input)) {
+                        System.out.println(input + "이(가) 존재합니다.");
+                    } else {
+                        System.out.println("존재하지 않는 과목입니다.");
+                    }
+
+                }
                 
             }
             else if(select == 5) {
+                System.out.println("과목 리스트를 정렬합니다.");
+                Collections.sort(subjectList);
+                System.out.println("정렬이 완료되었습니다.");
+                System.out.println("정렬된 과목 리스트: " + subjectList);
 
             }
             else if(select == 6) {
+                System.out.println("과목 리스트를 출력합니다.");
+                if(subjectList.isEmpty()) {
+                    System.out.println("과목 리스트가 비어있습니다.");
+                } else {
+                    System.out.println("과목 리스트: " + subjectList);
+                }
 
             }
             else if(select == 7) {
+                
 
             }
             else if(select == 8) {
