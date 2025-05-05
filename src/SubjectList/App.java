@@ -1,11 +1,13 @@
 package SubjectList;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 
 public class App {
     /*
@@ -145,7 +147,7 @@ public class App {
                         String path = System.getProperty("user.dir") + "/src/SubjectList";
                         BufferedWriter bw = new BufferedWriter(new FileWriter(path + "/SubjectList.txt", true));
                         for(String subject : subjectList) {
-                            bw.write(subject + "\n");
+                            bw.write(subject + "\r\n");
                         }
                         bw.close();
                         System.out.println("과목 리스트가 txt파일에 저장되었습니다.");                        
@@ -158,7 +160,62 @@ public class App {
 
             }
             else if(select == 8) {
+                // 과목 리스트를 txt파일에서 불러옵니다.
+                System.out.println("과목리스트를 txt파일에서 불러옵니다.");
+                if(!subjectList.isEmpty()) {
+                    // 과목 리스트가 비어있지 않으면 변환할 것인지 물어봅니다.
+                    // 변환할 것이라면 subjectList를 비우고 txt파일에서 불러옵니다.
+                    // 변환하지 않으면 subjectList를 그대로 유지합니다.            
+                    System.out.println("과목 리스트가 비어 있지 않습니다 변환 하시겠습니까? (y/n?)");
+                    String input = scan.next();
+                    if(input.equals("y")) {
+                        subjectList.clear();
+                        try {
+                            String path = System.getProperty(("user.dir")) + "/src/SubjectList";
+                            BufferedReader bw = new BufferedReader(new FileReader(path + "/SubjectList.txt"));
+                            String line = null;
+                            // readLine() 메서드를 사용하여 한 줄씩 읽어옵니다.
+                            // 주의: 
+                            // readLine() 메서드를 이용해 한 줄을 읽어와서 바로 List에 추가하지 않으면 버려지게 된다.
+                            while ((line = bw.readLine()) != null) {
+                                subjectList.add(line);
+                            }
+                            bw.close();   
+                            System.out.println("과목 리스트가 txt파일에서 불러와졌습니다.");
+                            System.out.println("과목 리스트: " + subjectList);
 
+                        }
+                        catch(Exception e) {
+                            System.out.println("불러오기에 실패했습니다.");
+                            e.printStackTrace();
+                        }
+                    }
+                    else if(input.equals("n")) {
+                        System.out.println("과목 리스트를 유지합니다.");
+                    }
+                    else {
+                        System.out.println("잘못된 입력입니다.");
+                    }
+                }
+                else {
+                    // 과목 리스트가 비어있으면 txt파일에서 불러옵니다.
+                    try {
+                        String path = System.getProperty(("user.dir")) + "/src/SubjectList";
+                        BufferedReader bw = new BufferedReader(new FileReader(path + "/SubjectList.txt"));
+                        String line = null;
+                        while ((line = bw.readLine()) != null) {
+                            subjectList.add(line);
+                        }
+                        bw.close();   
+                        System.out.println("과목 리스트가 txt파일에서 불러와졌습니다.");
+                        System.out.println("과목 리스트: " + subjectList);
+
+                    }
+                    catch(Exception e) {
+                        System.out.println("불러오기에 실패했습니다.");
+                        e.printStackTrace();
+                    }
+                }       
             }
             else if (select == 0) {
                 System.out.println("프로그램을 종료합니다.");
