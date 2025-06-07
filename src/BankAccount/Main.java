@@ -1,6 +1,6 @@
 package BankAccount;
 
-public class App {
+public class Main {
     /**
      * Q :   은행 계좌를 관리하는 프로그램.
      * 1. 계좌생성
@@ -12,6 +12,7 @@ public class App {
      * 
      */
     public static void main(String[] args) {
-        
+        BankApp bankApp = new BankApp();
+        bankApp.run();
     }
 }
