@@ -1,4 +1,4 @@
-package FindChar;
+package VowelChecker;
 
 import java.util.Arrays;
 import java.util.Scanner;
