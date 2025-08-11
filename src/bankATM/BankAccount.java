@@ -1,4 +1,4 @@
-package BankAccount;
+package bankATM;
 
 public class BankAccount {
     // 은행 계좌를 관리하는 클래스
@@ -14,6 +14,10 @@ public class BankAccount {
         this.accountNumber = accountNumber;
         this.onwerName = onwerName;
         this.balance = initialbalance;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
     // 입금 메서드
